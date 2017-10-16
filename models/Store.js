@@ -33,7 +33,8 @@ const storeSchema = new mongoose.Schema({
       type: String,
       required: 'You must provide an address'
     }
-  }
+  },
+  photo: String
 });
 
 // Has to be non arrow function to get this
