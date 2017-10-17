@@ -835,7 +835,8 @@ label {
         color: white; }
   .tag__text {
     padding: 1rem 1rem;
-    display: block; }
+    display: block;
+    font-size: 2rem; }
   .tag__count {
     padding: 1rem 1rem;
     background: white;
