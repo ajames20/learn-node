@@ -17,11 +17,14 @@ router.post(
   catchErrors(storeController.resize),
   catchErrors(storeController.createStore)
 );
+
 router.post(
   '/add/:id',
   storeController.upload,
   catchErrors(storeController.resize),
   catchErrors(storeController.updateStore)
 );
+
+router.get('/stores/:slug', catchErrors(storeController.getStoreBySlug));
 
 module.exports = router;
