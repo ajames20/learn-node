@@ -564,7 +564,7 @@ label {
   border-radius: 3px;
   display: -ms-flexbox;
   display: flex;
-  animation: slideIn forwards .1s ease-in-out 2;
+  animation: slideIn forwards 0.1s ease-in-out 2;
   animation-timing-function: cubic-bezier(0.01, 1.68, 0.58, 1); }
   .flash + .flash {
     animation-delay: 0.55s; }
@@ -597,7 +597,8 @@ label {
   .flash--info {
     background: linear-gradient(35deg, #f1e767 0%, #feb645 100%); }
   .flash p {
-    margin: 0; }
+    margin: 0;
+    text-align: center; }
 
 .nav {
   display: -ms-flexbox;
