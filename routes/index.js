@@ -12,7 +12,7 @@ router.get('/stores', catchErrors(storeController.getStores));
 router.get('/stores', storeController.getStores);
 router.get('/stores/:id/edit', catchErrors(storeController.editStore));
 
-router.get('/add', storeController.addStore);
+router.get('/add', authController.isLoggedIn, storeController.addStore);
 router.post(
   '/add',
   storeController.upload,
@@ -39,5 +39,8 @@ router.get('/register', userController.registerForm);
 router.post('/register', userController.validateRegister, userController.register, authController.login);
 
 router.get('/logout', authController.logout);
+
+router.get('/account', authController.isLoggedIn, userController.account);
+router.post('/account', catchErrors(userController.updateAccount));
 
 module.exports = router;

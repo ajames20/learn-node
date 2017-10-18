@@ -1,7 +1,7 @@
 mixin loginForm()
 
-  h2= title
   form.form(action="/login" method="POST")
+    h2= title
     label(for="email") Email Address
     input(type="email" name="email")
     label(for="password") Password
