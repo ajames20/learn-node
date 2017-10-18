@@ -38,12 +38,19 @@ const storeSchema = new mongoose.Schema({
 });
 
 // Has to be non arrow function to get this
-storeSchema.pre('save', function(next) {
+storeSchema.pre('save', async function(next) {
   if (!this.isModified('name')) {
     next();
     return;
   }
   this.slug = slug(this.name);
+  // Find stores that have the same name and add a unique identifier
+  const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+  const storesWithSlug = await this.constructor.find({ slug: slugRegEx });
+
+  if (storesWithSlug.length) {
+    this.slug = `${this.slug}-${storesWithSlug.length + 1}`;
+  }
   next();
 });
 
