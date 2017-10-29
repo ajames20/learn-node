@@ -42,6 +42,11 @@ const storeSchema = new mongoose.Schema({
   }
 });
 
+storeSchema.index({
+  name: 'text',
+  description: 'text'
+});
+
 // Has to be non arrow function to get this
 storeSchema.pre('save', async function(next) {
   if (!this.isModified('name')) {
