@@ -1,8 +1,9 @@
 extends layout 
 
-block content
+include mixins/_reviewForm
+include mixins/_review
 
-  h2 #{store.name}
+block content
     .single
       .single__hero
         img.single__image(src=`/uploads/${store.photo || 'store.png'}`)
@@ -19,3 +20,11 @@ block content
             li.tag
               a.tag__link(href=`/tags/${tag}`)
                 span.tag__text  ##{tag}
+      if user
+        +reviewForm(store)
+
+      if store.reviews
+        .reviews
+          each review in store.reviews
+            .review
+              +review(review)
