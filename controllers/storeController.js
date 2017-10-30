@@ -146,6 +146,13 @@ exports.heartStore = async (req, res) => {
   const hearts = req.user.hearts.map(obj => obj.toString());
   const operator = hearts.includes(req.params.id) ? '$pull' : '$addToSet';
   const user = await User.findByIdAndUpdate(req.user._id, { [operator]: { hearts: req.params.id } }, { new: true });
-  console.log(hearts);
   res.json(user);
+};
+
+exports.getHearts = async (req, res) => {
+  const stores = await Store.find({
+    _id: { $in: req.user.hearts }
+  });
+
+  res.render('stores', { title: 'Hearted Stores', stores });
 };

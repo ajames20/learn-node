@@ -14,7 +14,6 @@ function ajaxHeart(e) {
       }
     })
     .catch(console.error);
-  console.log('hearted');
 }
 
 export default ajaxHeart;

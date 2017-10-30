@@ -2840,7 +2840,6 @@ function ajaxHeart(e) {
       }, 2500);
     }
   }).catch(console.error);
-  console.log('hearted');
 }
 
 exports.default = ajaxHeart;
