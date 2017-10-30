@@ -11,6 +11,7 @@ router.get('/', catchErrors(storeController.getStores));
 
 router.get('/stores', catchErrors(storeController.getStores));
 router.get('/stores', storeController.getStores);
+router.get('/stores/page/:page', storeController.getStores);
 router.get('/stores/:id/edit', catchErrors(storeController.editStore));
 
 router.get('/add', authController.isLoggedIn, storeController.addStore);
