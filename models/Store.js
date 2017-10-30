@@ -120,4 +120,12 @@ storeSchema.statics.getTopStores = function() {
   ]);
 };
 
+function autoPopulate(next) {
+  this.populate('reviews');
+  next();
+}
+
+storeSchema.pre('find', autoPopulate);
+storeSchema.pre('findOne', autoPopulate);
+
 module.exports = mongoose.model('Store', storeSchema);
